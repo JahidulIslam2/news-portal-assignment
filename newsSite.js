@@ -20,6 +20,7 @@ const getCatagories=(newsData)=>{
 
                     `;
                     getParentDiv.appendChild(createElement)
+                    
     });
     
 }
@@ -39,11 +40,10 @@ const showCatagoryNews =(NewsShow)=>{
 showCatagoryNews();
 
 const NewsInCard =(cardNews)=>{
-console.log(cardNews)
     const getCarId=document.getElementById('card-id');
+    getCarId.innerText="";
     cardNews.forEach(cardItem => {
         const createCardDiv=document.createElement('div');
-
         createCardDiv.innerHTML=`
         <div class="card mb-3 mt-5"> 
         <div class="row g-0">
@@ -64,16 +64,13 @@ console.log(cardNews)
               </div>
               <button onclick="NewsDetailsInModal('${cardItem._id}')" type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#DetailsMore">Details</button>
            </div>
-           
           </div>
         </div> 
       </div>
         `;
-    
         getCarId.appendChild(createCardDiv);
+        
     });
-
-
 }
 // modal
 const NewsDetailsInModal =NewsDetails=>{
