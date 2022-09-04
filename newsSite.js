@@ -5,7 +5,7 @@ const catagories=()=>{
     fetch(url)
     .then(res => res.json())
     .then(data => getCatagories(data.data.news_category))
-    .catch((error) =>{console.log(error)})
+    .catch((error) =>{alert(error)})
 }
 
 // catagory name
