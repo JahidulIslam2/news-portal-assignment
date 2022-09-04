@@ -54,14 +54,17 @@ console.log(cardNews)
             <div class="card-body">
               <h5 class="card-title">${cardItem.title}</h5>
                 <p class="card-text" style="width: 100%;  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${cardItem.details}</p>
-           <div class=" col-lg-1 col-md-1 col-sm-1 col-xs-2 align-content-start d-inline g-5 ">
-              <img src="" class="img-thumbnail align-content-end border-radius:100%" alt="...">
-                <p>${cardItem.author.name}</p>
+           <div class=" col-lg-1 col-md-1 col-sm-1 col-xs-2 g-0 d-inline-flex m-5">
+                <img src="${cardItem.author.img}" class="w-100 px-15px rounded-circle mt-5"   alt="...">
+              </div>
+            <div class="d-inline-block d-md-inline-block d-sm-inline-block">
+                <p class="my-4">${cardItem.author.name}</p>
                 <p>${cardItem.author.published_date}</p>
                 <p>Total Views: ${cardItem.total_view}</p>
               </div>
-              <button onclick="NewsDetailsInModal('${cardItem._id}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#DetailsMore">Details</button>
-            </div>
+              <button onclick="NewsDetailsInModal('${cardItem._id}')" type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#DetailsMore">Details</button>
+           </div>
+           
           </div>
         </div> 
       </div>
@@ -83,33 +86,28 @@ const NewsDetailsInModal =NewsDetails=>{
 
 
 const DetailsInModal =modalData=>{
- console.log(modalData)
+  console.log(modalData)
 const getModalId=document.getElementById('DetailsMore');
-// modalData.forEach(loadedData => {
-//   console.log(loadedData)
-// });
-// const createDivModal=document.createElement('div')
 getModalId.innerHTML=`
 
     <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="DetailsMoreLabel">Modal title</h5>
+            <h5 class="modal-title" id="DetailsMoreLabel">Author Name :</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
           <h2>${modalData == "system" ? "No data available" :modalData}</h2>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
-`
+`;
 
 }
+ DetailsInModal();
 
-
-DetailsInModal()
-
+ 
 catagories();
