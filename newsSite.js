@@ -30,7 +30,7 @@ const showCatagoryNews =(NewsShow)=>{
     fetch(`https://openapi.programming-hero.com/api/news/category/0${NewsShow}`)
     .then(res => res.json())
     .then(data => NewsInCard(data.data))
-    .catch((error) => {console.log(error)})
+    .catch((error) => {alert(error)})
 
 
 }
