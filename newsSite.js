@@ -1,4 +1,5 @@
 
+
 const catagories=()=>{
     const url=`https://openapi.programming-hero.com/api/news/categories`
     fetch(url)
@@ -58,7 +59,7 @@ console.log(cardNews)
                 <p>${cardItem.author.published_date}</p>
                 <p>Total Views: ${cardItem.total_view}</p>
               </div>
-                
+              <button onclick="NewsDetailsInModal('${cardItem._id}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#DetailsMore">Details</button>
             </div>
           </div>
         </div> 
@@ -70,7 +71,23 @@ console.log(cardNews)
 
 
 }
+// modal
+const NewsDetailsInModal =NewsDetails=>{
+  const url=`https://openapi.programming-hero.com/api/news/${NewsDetails}`
+  fetch(url)
+  .then(res => res.json())
+  .then(data => DetailsInModal(data.data))
+  .catch((error) =>{console.log(error)})
+}
 
 
+const DetailsInModal =modalData=>{
+
+console.log(modalData)
+
+}
+
+
+DetailsInModal()
 
 catagories();
