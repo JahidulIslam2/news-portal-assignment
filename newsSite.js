@@ -76,7 +76,7 @@ const NewsDetailsInModal =NewsDetails=>{
   fetch(url)
   .then(res => res.json())
   .then(data => DetailsInModal(data.data[0].author.name))
-  .catch((error) =>{console.log(error)})
+  .catch((error) =>{alert(error)})
 }
 
 
