@@ -43,6 +43,7 @@ console.log(cardNews)
     const getCarId=document.getElementById('card-id');
     cardNews.forEach(cardItem => {
         const createCardDiv=document.createElement('div');
+
         createCardDiv.innerHTML=`
         <div class="card mb-3 mt-5"> 
         <div class="row g-0">
@@ -55,7 +56,7 @@ console.log(cardNews)
                 <p class="card-text" style="width: 100%;  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${cardItem.details}</p>
            <div class=" col-lg-1 col-md-1 col-sm-1 col-xs-2 align-content-start d-inline g-5 ">
               <img src="" class="img-thumbnail align-content-end border-radius:100%" alt="...">
-                <p>${cardItem.author.name == "system" ? "no data available" :cardItem.author.name}</p>
+                <p>${cardItem.author.name}</p>
                 <p>${cardItem.author.published_date}</p>
                 <p>Total Views: ${cardItem.total_view}</p>
               </div>
@@ -76,14 +77,35 @@ const NewsDetailsInModal =NewsDetails=>{
   const url=`https://openapi.programming-hero.com/api/news/${NewsDetails}`
   fetch(url)
   .then(res => res.json())
-  .then(data => DetailsInModal(data.data))
+  .then(data => DetailsInModal(data.data[0].author.name))
   .catch((error) =>{console.log(error)})
 }
 
 
 const DetailsInModal =modalData=>{
+ console.log(modalData)
+const getModalId=document.getElementById('DetailsMore');
+// modalData.forEach(loadedData => {
+//   console.log(loadedData)
+// });
+// const createDivModal=document.createElement('div')
+getModalId.innerHTML=`
 
-console.log(modalData)
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="DetailsMoreLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+          <h2>${modalData == "system" ? "No data available" :modalData}</h2>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+`
 
 }
 
