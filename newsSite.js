@@ -10,14 +10,12 @@ const catagories=()=>{
 
 // catagory name
 const getCatagories=(newsData)=>{
-  console.log(newsData)
     const getParentDiv=document.getElementById('btn-container');
     newsData.forEach(news => {
         const createElement=document.createElement('div');
         createElement.classList.add('div')
         createElement.innerHTML=`
                     <a onclick="showCatagoryNews(${news.category_id})" class="navbar-brand active" href="#">${news.category_name}</a>
-
                     `;
                     getParentDiv.appendChild(createElement)
                     
