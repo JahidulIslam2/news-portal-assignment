@@ -1,11 +1,11 @@
 
-
+// first api fetch
 const catagories=()=>{
     const url=`https://openapi.programming-hero.com/api/news/categories`
     fetch(url)
     .then(res => res.json())
     .then(data => getCatagories(data.data.news_category))
-    .catch((error) => {console.log(error)})
+    .catch((error) =>{console.log(error)})
 }
 
 // catagory name
